@@ -5,7 +5,7 @@
     },
     "name": "brest-validate",
     "description": "Express validation wrapper for the bREST API",
-    "version": "0.0.1",
+    "version": "0.0.1a",
     "repository": {
         "type" : "git",
         "url": "https://github.com/MaximTovstashev/brest.git"
