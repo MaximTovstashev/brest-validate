@@ -2,8 +2,9 @@ var expressValidator = require('express-validator');
 
 var BrestValidator =
 {
-    init: function(brest){
+    init: function(brest, callback){
         brest.getApp().use(expressValidator());
+        callback();
     },
     method: {
         beforeHandler: function (method, req, callback){
