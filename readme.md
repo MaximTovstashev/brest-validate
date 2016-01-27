@@ -1,12 +1,12 @@
-#Brest Validator
+# Brest Validator
 
-##About
+## About
 
 Validator wrapper around [REST API library](https://www.npmjs.org/package/brest).
 
-##How do I use it?
+## How do I use it?
 
-###1. Install from package manager
+### 1. Install from package manager
 
 If your project uses [package.json](https://npmjs.org/doc/json.html), simply include
 
@@ -26,8 +26,8 @@ Otherwise, you can install brest globally with npm and have it available from an
     
 Please note, that Brest version at least 0.1 is required for this wrapper.    
 
-###2 Setup
-####2.1 Application file
+### 2 Setup
+#### 2.1 Application file
 
 In your application file, once you've created Brest instance
 
@@ -39,7 +39,7 @@ In your application file, once you've created Brest instance
     brest.use(BrestValidator);
 ```
 
-####2.2 API script file structure
+#### 2.2 API script file structure
 
 API scripts are expected to export object files with the following structure:
 
@@ -71,11 +71,11 @@ Add validator (or validate) method to the API description. Use express-validator
 
 ##Changes
 
-###0.0.1
+### 0.0.1
 
 First working version.
 
-##MIT License
+## MIT License
 
 Copyright © 2013 Maxim Tovstashev <max.kitsch@gmail.com>
 

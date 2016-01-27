@@ -10,8 +10,11 @@ var BrestValidator =
         beforeHandler: function (method, req, callback){
             var validatorFunc = false;
             var error = {body: {}, code: method.getErrorCodes().VALIDATION_FAILED};
-            if (typeof(method.description.validator)=='function') validatorFunc = method.description.validator;
-            if (typeof(method.description.validate)=='function') validatorFunc = method.description.validate;
+
+            var methodFields = method.getFields();
+
+            if (typeof(methodFields.validator)=='function') validatorFunc = methodFields.validator;
+            if (typeof(methodFields.validate)=='function') validatorFunc = methodFields.validate;
             if (!validatorFunc) callback();
             else {
                 var customErrors = validatorFunc(req); //Validator function may return custom errors
