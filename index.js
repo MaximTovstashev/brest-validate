@@ -1,32 +1,42 @@
-var expressValidator = require('express-validator');
+const util = require('util');
+const expressValidator = require('express-validator');
 
-var BrestValidator =
+const HTTP_VALIDATION_FAILED = 422;
+
+const BrestValidator =
 {
-    init: function(brest, callback){
-        brest.getApp().use(expressValidator());
-        callback();
+    name: 'validate',
+
+    before_static_init: function(brest){
+      brest.app.use(expressValidator());
     },
-    method: {
-        beforeHandler: function (method, req, callback){
-            var validatorFunc = false;
-            var error = {body: {}, code: method.getErrorCodes().VALIDATION_FAILED};
 
-            var methodFields = method.getFields();
+    init: function(brest, callback) {
+      callback();
+    },
 
-            if (typeof(methodFields.validator)=='function') validatorFunc = methodFields.validator;
-            if (typeof(methodFields.validate)=='function') validatorFunc = methodFields.validate;
-            if (!validatorFunc) callback();
+    endpoint: {
+        beforeHandler: function (endpoint, req, callback){
+            let validatorFunc = false;
+            const error = {body: {}, code: HTTP_VALIDATION_FAILED};
+
+            const fields = endpoint.$fields;
+
+            if (typeof fields.validator === 'function') validatorFunc = fields.validator;
+            if (typeof fields.validate === 'function') validatorFunc = fields.validate;
+
+            if (typeof validatorFunc !== 'function') return callback();
             else {
-                var customErrors = validatorFunc(req); //Validator function may return custom errors
+                const customErrors = validatorFunc(req); //Validator function may return custom errors
                 if (customErrors === void 0) {
                     //if custom error is undefined we check for regular express validator errors
-                    var expressErrors = req.validationErrors();
-                    if (expressErrors) {
-                        error.body = expressErrors;
-                        callback(error);
-                    } else {
-                        callback();
-                    }
+                    req.getValidationResult().then(res => {
+                      if (!res.isEmpty()) {
+                        error.body = res.array();
+                        return callback(error);
+                      }
+                      return callback();
+                    });
                 } else {
                     error.body = customErrors;
                     callback(error);

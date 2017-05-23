@@ -32,11 +32,15 @@ Please note, that Brest version at least 0.1 is required for this wrapper.
 In your application file, once you've created Brest instance
 
 ```javascript
-    // Require brest library
-    var Brest = require('brest');
-    var brest = new Brest(require('./settings'));
-    var BrestValidator = require('brest-validator');
-    brest.use(BrestValidator);
+	// Require brest library
+	const Brest = require('brest');
+	const BrestValidator = require('brest-validator');
+	//...
+		
+	const brest = new Brest(require('./settings'), [BrestValidator]);
+	brest.on('ready', function(){
+		brest.use([]); //Required in Brest 0.4.7^
+	});
 ```
 
 #### 2.2 API script file structure
@@ -44,11 +48,11 @@ In your application file, once you've created Brest instance
 API scripts are expected to export object files with the following structure:
 
 ```javascript
-{
+const resource = {
     version: 1,
-    description: "Resource description" //Description for the Docker
-    resources: [
-        //Here come the resource objects
+    description: "Resource description", //Description for the Docker
+    endpoints: [
+        //Here come the endpoint objects
     ]
 }
 ```
@@ -56,24 +60,24 @@ API scripts are expected to export object files with the following structure:
 Add validator (or validate) method to the API description. Use express-validator notation.
 
 ```javascript
-{
+const endpoint = {
     /**
      * Validation method. It is supposed to use express-validator (assertion part of it), but it can be
      * also used as a custom validator. Any data returned by this method will be considered as an error message
-     */
+     */    
     validator: function(req){
         req.assert('fooId').notEmpty().isNumeric();
-    },
-
+    }
+//...
 
 }
 ```
 
 ##Changes
 
-### 0.0.1
+### 0.4.0
 
-First working version.
+Updated to work with Brest 0.4.x branch
 
 ## MIT License
 

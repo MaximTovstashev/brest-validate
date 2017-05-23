@@ -1,33 +1,39 @@
 {
-    "author": {
-        "name": "Max Kitsch",
-        "email": "max.kitsch@gmail.com"
-    },
-    "name": "brest-validate",
-    "description": "Express validation wrapper for the bREST API",
-    "version": "0.0.3",
-    "repository": {
-        "type" : "git",
-        "url": "https://github.com/MaximTovstashev/brest-validate.git"
-    },
-    "main": "index.js",
-    "dependencies": {
-        "express-validator": "*"
-    },
-    "devDependencies": {
-        "express-validator": "*"
-    },
-    "keywords": [
-        "api",
-        "app",
-        "brest",
-        "express",
-        "rest",
-        "restful",
-        "validate"
-    ],
-    "optionalDependencies": {},
-    "engines": {
-        "node": "*"
-    }
+  "author": {
+    "name": "Max Kitsch",
+    "email": "max.kitsch@gmail.com"
+  },
+  "name": "brest-validate",
+  "description": "Express validation wrapper for the bREST API",
+  "version": "0.4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MaximTovstashev/brest-validate.git"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express-validator": "^3.2.0"
+  },
+  "keywords": [
+    "api",
+    "app",
+    "brest",
+    "express",
+    "rest",
+    "restful",
+    "validate"
+  ],
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "brest": "^0.4.6",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.4.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
 }
