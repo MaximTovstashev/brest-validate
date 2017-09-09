@@ -7,11 +7,8 @@ const BrestValidator =
 {
     name: 'validate',
 
-    before_static_init: function(brest){
+    before_static_init: function(brest, callback){
       brest.app.use(expressValidator());
-    },
-
-    init: function(brest, callback) {
       callback();
     },
 
