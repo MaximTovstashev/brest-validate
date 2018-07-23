@@ -5,14 +5,14 @@
   },
   "name": "brest-validate",
   "description": "Express validation wrapper for the bREST API",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/MaximTovstashev/brest-validate.git"
   },
   "main": "index.js",
   "dependencies": {
-    "express-validator": "^3.2.0"
+    "express-validator": "^5.3.0"
   },
   "keywords": [
     "api",
@@ -28,7 +28,7 @@
     "node": "*"
   },
   "devDependencies": {
-    "brest": "^0.4.6",
+    "brest": "^1.0.0-alpha.6",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "mocha": "^3.4.1"

@@ -28,6 +28,13 @@ it('Should return default error code on incorrect request', (done) => {
       //noinspection BadExpressionStatementJS
       expect(res.body).to.be.eql({ "body": [
           {
+            "location": "params",
+            "msg": "Invalid Id",
+            "param": "id",
+            "value": "errorQuery",
+          },
+          {
+            "location": "params",
             "msg": "Invalid Id",
             "param": "id",
             "value": "errorQuery",

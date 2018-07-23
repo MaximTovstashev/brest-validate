@@ -7,7 +7,6 @@ let brest;
 before((done) => {
   const settings = require('../server/settings');
   brest = new Brest(settings, [BrestValidate]);
-  brest.use([]);
   brest.on('ready', () => {
     done();
   });
