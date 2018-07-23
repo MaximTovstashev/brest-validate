@@ -8,7 +8,9 @@ Validator wrapper around [REST API library](https://www.npmjs.org/package/brest)
 
 ### 1. Install from package manager
 
+```bash
 $ npm install brest-validator --save
+```
 
 ### 2 Setup
 #### 2.1 Application file
